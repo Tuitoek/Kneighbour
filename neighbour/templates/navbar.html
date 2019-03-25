@@ -1,18 +1,33 @@
 {%load static%}
+{%load bootstrap3%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">  {%block styles%}
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    {%endblock%}
+  <meta charset="utf-8">
+  {%block styles%}
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  {%endblock%}
   <title></title>
 </head>
 
 <body>
-<nav>
-  
-</nav>
+  {%block content%}
+  <nav>
+    <ul>
+      <li><i class="fa fa-user-circle">PROFILE</i></li>
+        <li><i class="fa fa-address-book">CONTACTS</i> </li>
+      <li><i class="fa fa-user">LANDMARKS</i> </li>
+      <li><span>EVENTS</span> </li>
+    </ul>
+    <hr style="color:black;">
+  </nav>
+  {%endblock%}
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %}
+  {% endblock %}
 </body>
 
 </html>
