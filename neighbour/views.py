@@ -37,7 +37,7 @@ def editdp(request):
 
 def profile(request):
     user=request.user
-    profile = Owner.objects.get(user = user)
+    profile = Owner.objects.all()
     return render(request,'profile/profile.html',locals())
 
 def business(request):
@@ -68,3 +68,4 @@ def events(request):
 def contacts(request):
     user = request.user
     contact = Contacts.objects.filter(user.neighbourhood)
+    return render(request,"contact.html")
