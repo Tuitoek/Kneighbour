@@ -1,5 +1,5 @@
-{% load bootstrap3%}
 {%load static%}
+{%load bootstrap3%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -29,19 +29,18 @@
         <a href="{% url 'events'%}">
           <li> <span>EVENTS</span> </li>
         </a>
-        <a href="/admin">
+        <a href="/admin/">
           <li>ADMIN</li>
         </a>
-
       </ul>
       <hr style="color:black;">
     </nav>
     <div class="row">
       <div class="col-md-7">
-        <form class="form-group" actiion="{%url 'editdp'%}" method="POST" style="color:white;">
+        <form class="form-group" actiion="{%url 'editdp'%}" method="POST">
           {% csrf_token %}
-          {%bootstrap_form p_form%}
-          <button style="color:black;" type="submit" name="button">Update Profile</button>
+          {%bootstrap_form form%}
+          <a href="{%url 'home'%}"><button type="submit" name="button">Add Business</button></a>
         </form>
       </div>
     </div>

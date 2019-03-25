@@ -1,0 +1,25 @@
+li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 20px;
+  color:white;
+}
+
+ul {
+  display: inline-block;
+  list-style-type: none;
+}
+
+hr {
+  border-top: 1px solid #8c8b8b;
+}
+i{
+  font-size: 50px;
+  color:white;
+}
+body{
+  background-color: #041218;
+}
+blockquote{
+  color:white;
+}

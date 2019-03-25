@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  {%block content%}
+  {% block content%}
   <div class="container-fluid">
     <nav>
       <ul>
@@ -29,37 +29,63 @@
         <a href="{% url 'events'%}">
           <li> <span>EVENTS</span> </li>
         </a>
-        <a href="/admin/">
-          <li>ADMIN</li>
-        </a>
-
+        <a href="/admin/"><li>ADMIN</li> </a>
       </ul>
       <hr style="color:black;">
     </nav>
 
-    <blockquote>To edit profile picture <br>click on the icon below <br> <a href="{% url " editdp"%}"><i class="fa fa-wrench"></i></a>
-    </blockquote>
+    <div class="">
+      <blockquote>
+        <span>If you want to upload business <br>
+          Click on the icon below</span>
+        <br>
+        <a href="{%url 'business'%}"><i class="fa fa-upload"></i></a>
+      </blockquote>
 
-    <div class="row">
-      <div class="col-md-7">
+
+    </div>
+    <div class="row" style="display;flex;justify-content:space-between">
+      <h3 style="color:white;">Events and Businesses</h3>
+      {%if business%}
+      {% for bus in business%}
+      <div class="col-md-3" style="background-color:white;">
+        <p>{{bus.name}}</p>
         <div class="panel">
           <div class="panel-heading">
-            <p>{{user.owner.name}}</p>
+            <p>{{bus.name}}</p>
           </div>
           <div class="panel-body">
-            {%if profile.profile%}
-            <img src="{{profile.profile.url}}">
-            {%endif%}
+            <p>{{bus.email}}</p>
           </div>
           <div class="panel-footer">
-            <p>{{user.owner.email}}</p>
-            <p>{{user.owner.neighbourhood}}</p>
+            <p>{{bus.neighbourhood}}</p>
           </div>
+        </div>
+      </div>
+      <br>
+      {%endfor%}
+      <br>
+      {%endif%}
 
+
+    </div>
+    <div class="row">
+      <div class="col-md-3" style="background-color:white;float:left;">
+        {% for event in events%}
+        <div class="panel">
+          <div class="panel-heading">
+            <h3>{{event.eventname}}</h3>
+          </div>
+          <div class="panel-body">
+            <p>{{event.description}}</p>
+          </div>
+          <div class="panel-footer">
+            <p>{{event.date}}</p>
+          </div>
+          {%endfor%}
         </div>
       </div>
     </div>
-
   </div>
 
   {%endblock%}
@@ -67,6 +93,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %}
   {% endblock %}
+
 </body>
 
 </html>
