@@ -9,9 +9,9 @@ from django.contrib.auth.models import User
 def landing(request):
     return render(request,'landing.html')
 
-def profile(request):
-    return render(request,'profile/profile.html')
 
+
+@login_required(login_url='/accounts/login/')
 def editdp(request):
     return render(request,'profile/editdp.html')
 
@@ -21,6 +21,7 @@ def home(request):
     business=Business.objects.all()
     return render(request,'home2.html',{"events":events,"business":business})
 
+@login_required(login_url='/accounts/login/')
 def editdp(request):
     p_form = UserForm(request.POST,request.FILES)
     owner = request.user
@@ -29,17 +30,19 @@ def editdp(request):
         if p_form.is_valid():
             add = p_form.save(commit=False)
             add.save()
-            return render(request,'profile.html')
-    else:
-        p_form =  UserForm(request.POST,request.FILES)
+            return render(request,'profile/profile.html')
+        else:
+            p_form =  UserForm(request.POST,request.FILES)
 
     return render(request,'profile/editdp.html',locals())
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     user=request.user
-    profile = Owner.objects.all()
-    return render(request,'profile/profile.html',locals())
+    profile = Profile.objects.all()
+    return render(request,'profile/profile.html',{"profile":profile})
 
+@login_required(login_url='/accounts/login/')
 def business(request):
     form = BusinessForm(request.POST,request.FILES)
     if request.method == 'POST':
@@ -52,6 +55,7 @@ def business(request):
         form =  BusinessForm(request.POST,request.FILES)
     return render(request,'business.html',locals())
 
+@login_required(login_url='/accounts/login/')
 def events(request):
     form = EventsForm(request.POST)
     if request.method == 'POST':
@@ -65,6 +69,7 @@ def events(request):
 
     return render(request,'events.html',locals())
 
+@login_required(login_url='/accounts/login/')
 def contacts(request):
     user = request.user
     contact = Contacts.objects.filter(user.neighbourhood)

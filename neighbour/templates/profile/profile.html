@@ -46,18 +46,15 @@
       <div class="col-md-4" style="float:right;">
         <div class="panel">
           <div class="panel-heading">
-            <p>{{user.owner.name}}</p>
+            <p>{{user.profile.name}}</p>
           </div>
           <div class="panel-body">
-
-            {% for prof in profile%}
             <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" height=300px width=300px>
-            {% endfor %}
 
           </div>
           <div class="panel-footer">
-            <p>{{user.owner.email}}</p>
-            <p>{{user.owner.neighbourhood}}</p>
+            <p>{{user.profile.email}}</p>
+            <p>{{user.profile.neighbourhood}}</p>
           </div>
 
         </div>

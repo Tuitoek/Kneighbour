@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model = Owner
-        fields=('name','neighbourhood','profile','email')
+        model = Profile
+        fields=('name','neighbourhood','email','user','profile')
 
 class BusinessForm(forms.ModelForm):
     class Meta:

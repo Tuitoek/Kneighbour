@@ -32,14 +32,21 @@ class Neighbourhood(models.Model):
     def update_occupants(self,occupants):
         self.update()
 
-class Owner(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User)
     name=models.CharField(max_length=30)
     neighbourhood=models.ForeignKey(Neighbourhood)
     profile = models.ImageField(upload_to='images')
     email=models.EmailField()
-    id=models.CharField(max_length=100,primary_key=True)
 
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    def update_profile(self):
+        self.save()
 
 class Business(models.Model):
     name = models.CharField(max_length=1000)
