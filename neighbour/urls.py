@@ -12,6 +12,7 @@ urlpatterns=[
     url(r'profile',views.profile,name='profile'),
     url(r'business',views.business,name='business'),
     url(r'events',views.events,name='events'),
+    url(r'^search/',views.search_hoods,name='search_hoods'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

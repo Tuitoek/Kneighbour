@@ -74,3 +74,18 @@ def contacts(request):
     user = request.user
     contact = Contacts.objects.filter(user.neighbourhood)
     return render(request,"contact.html")
+
+@login_required(login_url='/accounts/login/')
+def search_hoods(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term=request.GET.get('search')
+        searched_hoods=Neighbourhood.search_by_name(search_term)
+        message=f'{search_term}'
+
+        return render(request,'search.html',{"message":message,"searched_hoods":searched_hoods})
+
+    else:
+        message='You Havent searched for any term'
+
+        return render(request, 'search.html',{"message":message})
+    

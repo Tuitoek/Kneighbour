@@ -32,6 +32,11 @@ class Neighbourhood(models.Model):
     def update_occupants(self,occupants):
         self.update()
 
+    @classmethod
+    def search_by_name(cls,search_term):
+        neighborhood=cls.objects.filter(name__icontains=search_term)
+        return neighborhood    
+
 class Profile(models.Model):
     user = models.OneToOneField(User)
     name=models.CharField(max_length=30)

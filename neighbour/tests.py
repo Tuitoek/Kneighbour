@@ -7,7 +7,7 @@ class NeighhbourhoodTestClass(TestCase):
     def setUp(self):
         self.new_name = Neighbourhood(name='Rongai')
         self.new_location=Neighbourhood(location='Kajiado')
-        self.member = User.objects.create(memeber='Sarah')
+        self.member = User.objects.create(member='Sarah')
         self.new_occupants = Neighbourhood(occupants='3')
         self.neighbourhood=Neighbourhood(name='Test',location=self.new_location,occupants=self.mew_occupants,member=self.user)
     def test_instance(self):
@@ -33,22 +33,23 @@ class BusinessTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.new_business,Business))
 
-    def test_save_biz(self):
+    def test_save_business(self):
         self.new_business.save_biz()
-        bizs=Business.objects.all()
-        self.assertTrue(len(bizs)>0)
+        business=Business.objects.all()
+        self.assertTrue(len(business)>0)
 
-    def test_delete_biz(self):
+    def test_delete_business(self):
         self.new_business.save_biz()
 
-        self.new_business.delete_biz()
-        bizs=Business.objects.all()
-        self.assertTrue(len(bizs)==0)
+        self.new_business.delete_business()
+        business=Business.objects.all()
+        self.assertTrue(len(buisness)==0)
 
 class ProfileTestCase(TestCase):
     def setUp(self):
         self.new_user = User.objects.create_user(username='user',password='testpassword')
-        self.new_profile = Profile(user=self.new_user,profile_pic='pic.jpeg',bio='user-bio')
+        self.new_neighbourhood = Neighbourhood.objects,create_neighbourhood(neighbourhood="Rongai")
+        self.new_profile = Profile(user=self.new_user,profile='black.jpeg',email='user@gmail.com',neighbourhood=new_neighbourhood)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_profile,Profile))
